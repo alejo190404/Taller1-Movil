@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     lateinit var opcion: Any
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -21,19 +22,35 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         val spinner = findViewById<Spinner>(R.id.spinner)
         spinner.onItemSelectedListener = this
 
-
-
         val botonExplorar:Button = findViewById(R.id.botonExplorar)
         val botonFavoritos:Button = findViewById(R.id.botonFavoritos)
         val botonRecomendaciones:Button = findViewById(R.id.botonRecomendaciones)
 
-
-
         botonExplorar.setOnClickListener{
-            val intent = Intent(this, Destinos::class.java)
-            intent.putExtra("opcion", opcion.toString())
-            startActivity(intent)
+            crearIntentExplorar()
         }
+
+        botonFavoritos.setOnClickListener{
+            crearIntentFavoritos()
+        }
+
+        botonRecomendaciones.setOnClickListener{
+            crearIntentRecomendaciones()
+        }
+
+    }
+
+    fun crearIntentExplorar(){
+        val intent = Intent(this, ListaDestinosActivity::class.java)
+        intent.putExtra("opcion", opcion.toString())
+        startActivity(intent)
+    }
+
+    fun crearIntentFavoritos(){
+
+    }
+
+    fun crearIntentRecomendaciones(){
 
     }
 
