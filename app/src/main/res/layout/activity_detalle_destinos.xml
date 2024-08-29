@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    >
+
+    <TextView
+        android:id="@+id/nombreDestino"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="DEFAULT"
+        android:layout_above="@id/nombrePais"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/nombrePais"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="DEFAULT"
+        android:layout_above="@+id/nombreCategoria"
+        android:layout_centerHorizontal="true"
+        />
+    <TextView
+        android:id="@+id/nombreCategoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:text="Default"
+        android:textSize="16sp"
+        />
+    <TextView
+        android:id="@+id/nombrePlan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="DEFAULT"
+        android:layout_below="@id/nombreCategoria"
+        android:layout_centerHorizontal="true"
+        />
+    <TextView
+        android:id="@+id/nombrePrecio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="DEFAULT"
+        android:layout_below="@+id/nombrePlan"
+        android:layout_centerHorizontal="true"
+        />
+    <Button
+        android:id="@+id/botonAnadirFavoritos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Añadir a Favoritos"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        />
+
+
+</RelativeLayout>

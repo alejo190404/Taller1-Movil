@@ -40,17 +40,17 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     }
 
-    fun crearIntentExplorar(){
+    private fun crearIntentExplorar(){
         val intent = Intent(this, ListaDestinosActivity::class.java)
         intent.putExtra("opcion", opcion.toString())
         startActivity(intent)
     }
 
-    fun crearIntentFavoritos(){
+    private fun crearIntentFavoritos(){
 
     }
 
-    fun crearIntentRecomendaciones(){
+    private fun crearIntentRecomendaciones(){
 
     }
 

@@ -1,6 +1,9 @@
 package com.example.taller1
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.activity.enableEdgeToEdge
@@ -21,7 +24,6 @@ class ListaDestinosActivity : AppCompatActivity() {
         val json = JSONObject(loadJSONFromAsset())
         val destinos = json.getJSONArray("destinos")
 
-        //Arreglo (tamaño estático)
         var arreglo = arrayOfNulls<String>(destinos.length())
 
         arreglo = llenarArreglo(arreglo, destinos)
@@ -32,6 +34,28 @@ class ListaDestinosActivity : AppCompatActivity() {
             arreglo.filterNotNull()
         )
         lista.adapter = adaptador
+
+        lista.setOnItemClickListener(object: AdapterView.OnItemClickListener{
+            override fun onItemClick( parent: AdapterView<*>?,  view: View?, position: Int, id: Long) {
+                crearIntentDetalles(encontrarJSONObject(arreglo[position], destinos))
+            }
+
+        })
+    }
+
+    private fun encontrarJSONObject(nombre: String?, destinos: JSONArray): JSONObject{
+        for (i in 0 until destinos.length()){
+            if (destinos.getJSONObject(i).getString("nombre") == nombre){
+                return destinos.getJSONObject(i)
+            }
+        }
+        return JSONObject()
+    }
+
+    private fun crearIntentDetalles(destino: JSONObject) {
+        val intent = Intent(this, DetalleDestinosActivity::class.java)
+        intent.putExtra("destino", destino.toString())
+        startActivity(intent)
     }
 
     fun llenarArreglo(arreglo: Array<String?>, destinos: JSONArray): Array<String?> {
