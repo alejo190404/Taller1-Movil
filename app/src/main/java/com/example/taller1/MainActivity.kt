@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
 
         botonFavoritos.setOnClickListener{
-            crearIntentFavoritos()
+            startActivity(Intent(this, FavoritosActivity::class.java))
         }
 
         botonRecomendaciones.setOnClickListener{
@@ -46,10 +46,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         val intent = Intent(this, ListaDestinosActivity::class.java)
         intent.putExtra("opcion", opcion.toString())
         startActivity(intent)
-    }
-
-    private fun crearIntentFavoritos(){
-
     }
 
     private fun crearIntentRecomendaciones(){

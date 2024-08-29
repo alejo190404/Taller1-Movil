@@ -2,30 +2,71 @@ package com.example.taller1
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import org.json.JSONObject
 
 class DetalleDestinosActivity : AppCompatActivity() {
+    private lateinit var nomDestino: TextView
+    private lateinit var pais: TextView
+    private lateinit var categoria: TextView
+    private lateinit var plan: TextView
+    private lateinit var precio: TextView
+    private lateinit var boton: Button
+    private lateinit var nomIntent: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalle_destinos)
 
-        val nomIntent:String = intent.getStringExtra("destino")!!
+        nomIntent = intent.getStringExtra("destino")!!
 
-//        Data.initialize(baseContext)
-        Log.i("JSONObject", Data.ARREGLO_DESTINOS.toString())
-        val destino:JSONObject = findDestinoByName(nomIntent);
+        val destino: JSONObject = findDestinoByName(nomIntent)
 
-        var nomDestino:TextView = findViewById(R.id.nombreDestino)
-        var pais:TextView = findViewById(R.id.nombrePais)
-        var categoria:TextView = findViewById(R.id.nombreCategoria)
-        var plan:TextView = findViewById(R.id.nombrePlan)
-        var precio:TextView = findViewById(R.id.nombrePrecio)
+        getViews()
+        initializeButton(boton)
+        setDestinationDetails(destino)
 
+        boton.setOnClickListener{
+            markButtonDisable(boton)
+            anadirFavoritos(destino)
+            Toast.makeText(this, "Añadido a favoritos", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun anadirFavoritos(destino: JSONObject) {
+        Data.ARREGLO_FAVORITOS.add(destino)
+        for (i in 0 until Data.ARREGLO_FAVORITOS.size){
+            Log.i("Elemento $i", Data.ARREGLO_FAVORITOS[i].toString())
+        }
+    }
+
+    private fun initializeButton(boton: Button) {
+        for (i in 0 until Data.ARREGLO_FAVORITOS.size){
+            val elemento: JSONObject = Data.ARREGLO_FAVORITOS[i]
+            if (elemento.getString("nombre") == nomIntent) {
+                markButtonDisable(boton)
+            }
+        }
+    }
+
+    fun markButtonDisable(button: Button) {
+        button?.isEnabled = false
+        button?.isClickable = false
+    }
+
+    private fun getViews() {
+        nomDestino = findViewById(R.id.nombreDestino)
+        pais = findViewById(R.id.nombrePais)
+        categoria = findViewById(R.id.nombreCategoria)
+        plan = findViewById(R.id.nombrePlan)
+        precio = findViewById(R.id.nombrePrecio)
+        boton = findViewById(R.id.botonAnadirFavoritos)
+    }
+
+    private fun setDestinationDetails(destino: JSONObject) {
         nomDestino.text = destino.getString("nombre")
         pais.text = destino.getString("pais")
         categoria.text = destino.getString("categoria")
@@ -33,11 +74,11 @@ class DetalleDestinosActivity : AppCompatActivity() {
         precio.text = destino.getString("precio")
     }
 
-    fun findDestinoByName(nomIntent: String): JSONObject {
-        for (i in 0 until Data.ARREGLO_DESTINOS.length()){
-            var elemento:JSONObject =Data.ARREGLO_DESTINOS.getJSONObject(i)
-            if (elemento.getString("nombre") == nomIntent){
-                return Data.ARREGLO_DESTINOS.getJSONObject(i)
+    private fun findDestinoByName(nomIntent: String): JSONObject {
+        for (i in 0 until Data.ARREGLO_DESTINOS.length()) {
+            val elemento: JSONObject = Data.ARREGLO_DESTINOS.getJSONObject(i)
+            if (elemento.getString("nombre") == nomIntent) {
+                return elemento
             }
         }
         return JSONObject()

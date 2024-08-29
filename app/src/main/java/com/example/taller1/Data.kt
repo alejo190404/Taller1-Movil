@@ -9,6 +9,7 @@ import java.io.InputStream
 class Data {
     companion object {
         var ARREGLO_DESTINOS: JSONArray = JSONArray()
+        var ARREGLO_FAVORITOS: MutableList<JSONObject> = mutableListOf()
 
         fun initialize(context: Context) {
             try {
