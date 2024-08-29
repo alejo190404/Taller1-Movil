@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
 
         botonRecomendaciones.setOnClickListener{
-            crearIntentRecomendaciones()
+            startActivity(Intent(this, RecomendacionesActivity::class.java))
         }
 
     }
@@ -46,10 +46,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         val intent = Intent(this, ListaDestinosActivity::class.java)
         intent.putExtra("opcion", opcion.toString())
         startActivity(intent)
-    }
-
-    private fun crearIntentRecomendaciones(){
-
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
