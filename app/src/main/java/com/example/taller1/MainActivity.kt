@@ -16,8 +16,10 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        //Inicializar arreglo global de destinos
+        Data.initialize(baseContext)
 
         val spinner = findViewById<Spinner>(R.id.spinner)
         spinner.onItemSelectedListener = this

@@ -1,6 +1,7 @@
 package com.example.taller1
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -11,10 +12,13 @@ import org.json.JSONObject
 class DetalleDestinosActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_detalle_destinos)
 
-        val destino = JSONObject(intent.getStringExtra("destino")!!)
+        val nomIntent:String = intent.getStringExtra("destino")!!
+
+//        Data.initialize(baseContext)
+        Log.i("JSONObject", Data.ARREGLO_DESTINOS.toString())
+        val destino:JSONObject = findDestinoByName(nomIntent);
 
         var nomDestino:TextView = findViewById(R.id.nombreDestino)
         var pais:TextView = findViewById(R.id.nombrePais)
@@ -27,5 +31,15 @@ class DetalleDestinosActivity : AppCompatActivity() {
         categoria.text = destino.getString("categoria")
         plan.text = destino.getString("plan")
         precio.text = destino.getString("precio")
+    }
+
+    fun findDestinoByName(nomIntent: String): JSONObject {
+        for (i in 0 until Data.ARREGLO_DESTINOS.length()){
+            var elemento:JSONObject =Data.ARREGLO_DESTINOS.getJSONObject(i)
+            if (elemento.getString("nombre") == nomIntent){
+                return Data.ARREGLO_DESTINOS.getJSONObject(i)
+            }
+        }
+        return JSONObject()
     }
 }
