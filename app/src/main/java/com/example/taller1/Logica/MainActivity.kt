@@ -1,4 +1,4 @@
-package com.example.taller1
+package com.example.taller1.Logica
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,10 +6,9 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.Button
 import android.widget.Spinner
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.taller1.Datos.Data
+import com.example.taller1.R
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     lateinit var opcion: Any

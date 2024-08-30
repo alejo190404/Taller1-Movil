@@ -1,10 +1,9 @@
-package com.example.taller1
+package com.example.taller1.Datos
 
 import android.content.Context
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
-import java.io.InputStream
 
 class Data {
     companion object {

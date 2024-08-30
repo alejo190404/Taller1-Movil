@@ -1,9 +1,11 @@
-package com.example.taller1
+package com.example.taller1.Logica
 
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.taller1.Datos.Data
+import com.example.taller1.R
 import org.json.JSONObject
 
 class FavoritosActivity : AppCompatActivity() {
