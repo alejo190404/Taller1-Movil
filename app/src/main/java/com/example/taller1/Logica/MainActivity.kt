@@ -1,4 +1,4 @@
-package com.example.taller1
+package com.example.taller1.Logica
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,10 +6,9 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.Button
 import android.widget.Spinner
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.taller1.Datos.Data
+import com.example.taller1.R
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     lateinit var opcion: Any
@@ -33,11 +32,11 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
 
         botonFavoritos.setOnClickListener{
-            crearIntentFavoritos()
+            startActivity(Intent(this, FavoritosActivity::class.java))
         }
 
         botonRecomendaciones.setOnClickListener{
-            crearIntentRecomendaciones()
+            startActivity(Intent(this, RecomendacionesActivity::class.java))
         }
 
     }
@@ -46,14 +45,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         val intent = Intent(this, ListaDestinosActivity::class.java)
         intent.putExtra("opcion", opcion.toString())
         startActivity(intent)
-    }
-
-    private fun crearIntentFavoritos(){
-
-    }
-
-    private fun crearIntentRecomendaciones(){
-
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {

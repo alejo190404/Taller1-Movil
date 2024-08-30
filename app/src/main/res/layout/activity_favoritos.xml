@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:padding="16dp"
+    >
+
+    <TextView
+        android:id="@+id/titleFavoritos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="FAVORITOS"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        />
+
+    <ListView
+        android:id="@+id/favoritosListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/titleFavoritos"
+        android:layout_marginTop="16dp"
+        />
+
+</RelativeLayout>

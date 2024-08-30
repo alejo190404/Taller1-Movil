@@ -1,16 +1,15 @@
-package com.example.taller1
+package com.example.taller1.Logica
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.example.taller1.Datos.Data
+import com.example.taller1.R
 import org.json.JSONArray
-import org.json.JSONObject
 import java.io.IOException
 import java.io.InputStream
 
